@@ -7,10 +7,9 @@ The project is a web interface for: <br>
 - Seeing the log of a python-selenium test <br>
 - Changing the code of a python-selenium test <br>
 - Changing the name of a python-selenium test <br>
-- Changing the description of a python-selenium test <br>
-of python-Selenium Test-Case.
-The project is written in python with the flask-framework (flask and flask-fontawesome), HTML, CSS (Bootstrap) and JavaScript (JQuery, Ajax).
-<img src="C:/Users/Joel/Downloads/Unbenannt.png" alt="Web interface design" title="Web interface design" />
+- Changing the description of a python-selenium test of python-Selenium Test-Case. <br>
+The project is written in python with the flask-framework (flask and flask-fontawesome), HTML, CSS (Bootstrap) and JavaScript (JQuery, Ajax). <br>
+The whole page is a single page application. Everything work asynchron via Ajax-Calls <br>
 
 <h2>Project status</h2>
 The project itself is complete and ready for use. However, it can be improved. For example, the use of CSV files can be replaced by a use of a database.
