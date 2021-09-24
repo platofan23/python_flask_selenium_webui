@@ -1,0 +1,5 @@
+urllib3==1.26.6
+selenium==3.141.0
+flask==2.0.1
+flask_fontawesome==0.1.5 
+

@@ -1,0 +1,141 @@
+<html lang="de">
+
+<head>
+    <!-- Meta  -->
+    <meta charset="UTF-8">
+    <meta http-equiv="refresh" content="60">
+    <meta name="description" content="Web UI for Selenium Python">
+    <meta name="keywords" content="HTML, CSS, JavaScript, Python, Flask, Selenium">
+    <meta name="author" content="Joel Koch (57002)">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Tab-Title -->
+    <title>Tests Overview</title>
+    <!-- Linked CSS-Stylesheets  -->
+    {{ fontawesome_html() }}
+    <link rel="icon" href="data:;base64,iVBORw0KGgo=" referrerpolicy="no-referrer" media="screen" hreflang="en">
+    <link rel="stylesheet" type="text/css" href="/static/css/compiled-addons-4.19.2.min.css" referrerpolicy="no-referrer" media="screen" hreflang="en">
+    <link rel="stylesheet" type="text/css" href="/static/css/mdb.min.css" referrerpolicy="no-referrer" media="screen" hreflang="en">
+    <link rel="stylesheet" type="text/css" href="/static/css/bootstrap.min.css" referrerpolicy="no-referrer" media="screen" hreflang="en">
+    <link rel="stylesheet" type="text/css" href="/static/css/Fontawesome/css/all.css" referrerpolicy="no-referrer" media="screen" hreflang="en">
+    <link rel="stylesheet" type="text/css" href="/static/css/T_Index.css" referrerpolicy="no-referrer" media="screen" hreflang="en">
+    <!-- Linked JS-Scripts  -->
+    <script type="text/javascript" src="/static/js/jquery.min.js" referrerpolicy="no-referrer" defer></script>
+    <script type="text/javascript" src="/static/js/popper.min.js" referrerpolicy="no-referrer" defer></script>
+    <script type="text/javascript" src="/static/js/bootstrap.min.js" referrerpolicy="no-referrer" defer></script>
+    <script type="text/javascript" src="/static/js/mdb.min.js" referrerpolicy="no-referrer" defer></script>
+    <script type="text/javascript" src="/static/js/compiled-addons.min.js" referrerpolicy="no-referrer" defer></script>
+    <script type="text/javascript" src="/static/js/mdb-plugins-gathered.min.js" referrerpolicy="no-referrer" defer></script>
+    <script type="text/javascript" src="/static/js/table.js" referrerpolicy="no-referrer" defer></script>
+    <noscript>Your browser does not support JavaScript!</noscript>
+</head>
+
+<body>
+    <!-- Editable table -->
+    <div class="card">
+        <h3 class="card-header text-center font-weight-bold text-uppercase py-4">
+            Test Overview
+        </h3>
+        <div class="card-body">
+            <div id="table" class="table-editable">
+                <span class="table-add float-right mb-3 mr-2">
+                    <a href="#!" class="text-success" target="_self" referrerpolicy="no-referrer" rel="noreferrer"
+                        media="screen" hreflang="en" type="text/html">
+                        <i class="fas fa-plus fa-2x" aria-hidden="true"></i>
+                    </a>
+                </span>
+                <table class="table table-bordered table-responsive-md table-striped text-center">
+                    <thead>
+                        <tr>
+                            <th class="text-center" abbr="TNU" scope="col row">Test Number</th>
+                            <th class="text-center" abbr="TNA" scope="col row">Test Name</th>
+                            <th class="text-center" abbr="TD" scope="col row">Test Description</th>
+                            <th class="text-center" abbr="ST" scope="col row">state last run</th>
+                            <th class="text-center" abbr="E" scope="col row">Save Edit</th>
+                            <th class="text-center" abbr="E" scope="col row">Edit Code</th>
+                            <th class="text-center" abbr="RM" scope="col row">Remove</th>
+                            <th class="text-center" abbr="RT" scope="col row">Run</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {%for i in range(0, len)%}
+                        <tr class="hide" id="{{i}}">
+                            <td class="pt-3-half" headers="Testnumber" contenteditable="false">{{list_Number[i]}}</td>
+                            <td class="pt-3-half t_name" headers="Testname" contenteditable="true">{{list_Name[i]}}</td>
+                            <td class="pt-3-half t_des" headers="Testdescrption" contenteditable="true">
+                                {{list_Description[i]}}
+                            </td>
+                            {% if list_state[i].endswith('Created') %}
+                            <td class="pt-3-half" headers="Teststate" contenteditable="false">
+                                <span class="Created teststate">
+                                    <a href="#!" class="Created" target="_self" referrerpolicy="no-referrer" rel="noreferrer"
+                                        media="screen" hreflang="en" type="text/html">
+                                        {{list_state[i]}}
+                                    </a>
+                                </span>
+                            </td>
+                            {% endif %} {% if list_state[i].endswith('Success') %}
+                            <td class="pt-3-half" headers="Teststate" contenteditable="false">
+                                <span class="Success teststate">
+                                    <a href="#!" class="Success" target="_self" referrerpolicy="no-referrer" rel="noreferrer"
+                                        media="screen" hreflang="en" type="text/html">
+                                        {{list_state[i]}}
+                                    </a>
+                                </span>
+                            </td>
+                            {% endif %} {% if list_state[i].endswith('Failed') %}
+                            <td class="pt-3-half" headers="Teststate" contenteditable="false">
+                                <span class="Failed teststate">
+                                    <a href="#!" class="Failed" target="_self" referrerpolicy="no-referrer" rel="noreferrer"
+                                        media="screen" hreflang="en" type="text/html">
+                                        {{list_state[i]}}
+                                    </a>
+                                </span>
+                            </td>
+                            {% endif %}
+                            <td class="pt-3-half">
+                                <span class="table-edit">
+                                    <a href="#!" class="indigo-text" target="_self" referrerpolicy="no-referrer"
+                                        rel="noreferrer" media="screen" hreflang="en" type="text/html">
+                                        <i class="fas fa-save" aria-hidden="true"></i>
+                                    </a>
+                                </span>
+                            </td>
+                            <td class="pt-3-half">
+                                <span class="code-edit">
+                                    <a href="#!" class="indigo-text" target="_self" referrerpolicy="no-referrer"
+                                        rel="noreferrer" media="screen" hreflang="en" type="text/html">
+                                        <i class="fas fa-code" aria-hidden="true"></i>
+                                    </a>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="table-remove">
+                                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
+                                        Remove
+                                    </button>
+                                </span>
+                            </td>
+                            <td>
+                                <span class="table-run">
+                                    <button type="button" class="btn btn-danger btn-rounded btn-sm my-0">
+                                        Run
+                                    </button>
+                                </span>
+                            </td>
+                        </tr>
+                        {%endfor%}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <!-- The Modal -->
+    <div id="myModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <span class="close">&times;</span>
+        </div>
+    </div>
+</body>
+
+</html>
