@@ -11,6 +11,8 @@ The project is a web interface for: <br>
 The project is written in python with the flask-framework (flask and flask-fontawesome), HTML, CSS (Bootstrap) and JavaScript (JQuery, Ajax). <br>
 The whole page is a single page application. Everything work asynchron via Ajax-Calls <br>
 
+![Unbenannt](https://user-images.githubusercontent.com/58483712/134743838-0f515895-5171-4a25-b013-bbfe9c59e428.png)
+
 <h2>Project status</h2>
 The project itself is complete and ready for use. However, it can be improved. For example, the use of CSV files can be replaced by a use of a database.
 
