@@ -24,6 +24,49 @@ Requirements for running the webui are:
 - flask <br>
 - flask-fontawesome <br>
 - Browser with JavaScript activated (Firefox or Chrome)
+- Code Snippet for the Selenium test to save <br>
+<code> 
+  
+    from selenium import webdriver 
+    from selenium.webdriver.firefox.options import Options 
+    from pathlib import Path 
+    import csv,datetime,os,sys  
+  
+    FILE_STATE = Path(r'/data/T_State.csv') 
+    name = os.path.basename(sys.argv[0]) 
+    state = "YourState (Failed/Success)" 
+    state_list = list() 
+    date_time = datetime.datetime.now() 
+    #Reading the test states            
+    with open(FILE_STATE, mode='r') as data_file:
+        test_reader = csv.reader(data_file) 
+        for row in test_reader: 
+            if len(row) == 0: 
+                continue   
+            else: 
+                state_list.append(row) 
+    data_file.close() 
+    
+    if os.path.exists(FILE_STATE):
+        os.remove(FILE_STATE)  
+     
+    if(os.path.exists(FILE_STATE) == False):
+        f = open(FILE_STATE, 'x') 
+        f.close() 
+  
+    for x in range(0, len(state_list)):  
+            with open(FILE_STATE, mode='a') as t_file:
+                test_writer = csv.writer(t_file, delimiter=',', quotechar='"', quoting=csv.QUOTE_MINIMAL)
+                characters = "[']"
+                for y in range(len(characters)):
+                    state_list[x] = str(state_list[x]).replace(characters[y],"")
+                
+                if(str(state_list[x]).startswith(name)):
+                    state_list[x] = str(state_list[x]) + "/" + date_time.strftime('%c')+ ": " + state
+                    print(state_list[x])
+                test_writer.writerow([state_list[x]])                             
+                t_file.close()
+  </code>
 
 <h2>Installation</h2>
 1. Download and Install Python. <br>
@@ -68,4 +111,5 @@ For Linux <code> python3 Pages.py </code> <br>
 - Second Option is to build the container via the existing dockerfile <br>
 - In both options the container is ready to be run. <br>
 - Parameters are the port (5000), Hostpath (your path where the data should be saved) and the Contaienr path (enter /data) <br>
+- <code> docker run --name name --rm -p 5000:5000 -v hostpath:/data seleniumwebui </code>
 
